@@ -30,7 +30,6 @@ public class WorkerViewHolder extends RecyclerView.ViewHolder {
         vhWorkerSkill = view.findViewById(R.id.raw_skill);
         vhDeleteWorker = view.findViewById(R.id.raw_btn_delete);
         vhMaterialCard = view.findViewById(R.id.raw_material_card);
-        vhPhotoPathText = view.findViewById(R.id.raw_photo_path_text);
     }
 
     public WorkerViewHolder(@NonNull View itemView, ImageView vhWorkerPhoto, TextView vhWorkerName,

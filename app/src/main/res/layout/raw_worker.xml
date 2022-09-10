@@ -68,14 +68,7 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/raw_photo_path_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="12sp"
-            android:textColor="@color/black"
-            android:textStyle="italic"
-            android:layout_marginLeft="10dp"/>
+
     </com.google.android.material.card.MaterialCardView>
 
 

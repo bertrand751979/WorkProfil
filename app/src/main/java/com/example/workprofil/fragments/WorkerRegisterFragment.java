@@ -49,21 +49,17 @@ import java.util.Date;
 import java.util.Locale;
 
 public class WorkerRegisterFragment extends Fragment {
-
     private EditText editName;
     private EditText editSkill;
-    private TextView photoPath;
     private ImageView photoImageView;
     private Button btnTakePicture;
     private Button btnAddWorker;
-    private Button btnDisplayPhotoPath;
     private WorkerRegisterFragmentViewModel workerRegisterFragmentViewModel;
     private ActivityResultLauncher<String>openAlertDialogDeviceToAllowToUseDeviceCamera;
     private ActivityResultLauncher<Intent>checkIfPermissionIsOkToOpenDeviceCameraToTakeAphoto;
     private ActivityResultLauncher<Intent> photoChooseFromGallery;
     private Bitmap imageBitmap;
     private Bitmap selectedImage;
-    private AppCompatImageView photoPathImageDisplay;
     private boolean isImageFromCamera = true;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -113,13 +109,10 @@ public class WorkerRegisterFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        btnDisplayPhotoPath = view.findViewById(R.id.btn_display_image_from_photoPath);
-        photoPathImageDisplay = view.findViewById(R.id.edit_photo_path_image);
         editName = view.findViewById(R.id.edit_worker_name);
         editSkill = view.findViewById(R.id.edit_worker_skill);
         photoImageView = view.findViewById(R.id.edit_camera_picture);
         btnTakePicture = view.findViewById(R.id.btn_take_picture);
-        photoPath = view.findViewById(R.id.edit_photo_path);
         btnTakePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -133,18 +126,11 @@ public class WorkerRegisterFragment extends Fragment {
                 Worker worker = new Worker();
                 worker.setNameWorker(editName.getText().toString());
                 worker.setSkillWorker(editSkill.getText().toString());
-                worker.setTextPhotoPathWorker(photoPath.getText().toString());
                 if(isImageFromCamera==true){
                     worker.setPhotoWorker(saveToCacheMemory(getActivity(),imageBitmap));
                 }else{worker.setPhotoWorker(saveToCacheMemory(getActivity(),selectedImage));}
                 workerRegisterFragmentViewModel.addWorker(worker,getContext());
                 Toast.makeText(WorkerRegisterFragment.this.getContext(), "Ajouté", Toast.LENGTH_SHORT).show();
-            }
-        });
-        btnDisplayPhotoPath.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                photoPathImageDisplay.setImageBitmap(BitmapFactory.decodeFile(photoPath.getText().toString()));
             }
         });
     }
@@ -175,7 +161,6 @@ public class WorkerRegisterFragment extends Fragment {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         checkIfPermissionIsOkToOpenDeviceCameraToTakeAphoto.launch(takePictureIntent);
     }
-
 
     private void takePhotoFromDeviceGallery(){
         Intent intent = new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.INTERNAL_CONTENT_URI);
@@ -217,8 +202,6 @@ public class WorkerRegisterFragment extends Fragment {
             photoImageView.setImageBitmap(imageBitmap);
             isImageFromCamera = true;
             saveToCacheMemory(getActivity(),imageBitmap);
-            photoPath.setText(saveToCacheMemory(getActivity(), imageBitmap));
-
         }
     }
 
@@ -232,16 +215,10 @@ public class WorkerRegisterFragment extends Fragment {
                 photoImageView.setImageBitmap(selectedImage);
                 isImageFromCamera = false;
                 saveToCacheMemory(getActivity(),selectedImage);
-                photoPath.setText(saveToCacheMemory(getActivity(),selectedImage));
-
-
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
                 Toast.makeText(WorkerRegisterFragment.this.getContext(), "Erreur", Toast.LENGTH_LONG).show();
             }
         }
     }
-
-
-
 }

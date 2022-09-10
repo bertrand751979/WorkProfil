@@ -53,33 +53,10 @@
         android:layout_height="wrap_content"
         android:text="Annuler"/>
 
-    <Button
-        android:id="@+id/desc_btn_test_image_path"
-        android:layout_width="match_parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:layout_height="wrap_content"
-        android:text="Test"/>
 
 
-    <ImageView
-        android:id="@+id/desc_test_photo"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="25dp"
-        android:src="@drawable/ic_profil"/>
 
-    <TextView
-        android:id="@+id/desc_test_txt_photo_path"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="12sp"
-        android:text="Prenom"
-        android:gravity="center"
-        android:textColor="@color/black"
-        android:layout_marginTop="30dp"/>
+
 
 
 </LinearLayout>

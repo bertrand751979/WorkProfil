@@ -67,4 +67,6 @@ public class Worker implements Serializable {
     public void setTextPhotoPathWorker(String textPhotoPathWorker) {
         this.textPhotoPathWorker = textPhotoPathWorker;
     }
+
+
 }
