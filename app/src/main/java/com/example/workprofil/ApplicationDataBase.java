@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase;
 import com.example.workprofil.model.Worker;
 
 
-@Database(entities = {Worker.class},version = 26)
+@Database(entities = {Worker.class},version = 28)
 public abstract class ApplicationDataBase extends RoomDatabase {
     private static ApplicationDataBase INSTANCE;
     public abstract WorkerDao getWorkerDao();

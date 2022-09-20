@@ -60,7 +60,7 @@ public class WorkerRegisterFragment extends Fragment {
     private ActivityResultLauncher<Intent> photoChooseFromGallery;
     private Bitmap imageBitmap;
     private Bitmap selectedImage;
-    private boolean isImageFromCamera = true;
+    public boolean isImageFromCamera = true;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -128,9 +128,11 @@ public class WorkerRegisterFragment extends Fragment {
                 worker.setSkillWorker(editSkill.getText().toString());
                 if(isImageFromCamera==true){
                     worker.setPhotoWorker(saveToCacheMemory(getActivity(),imageBitmap));
-                }else{worker.setPhotoWorker(saveToCacheMemory(getActivity(),selectedImage));}
-                workerRegisterFragmentViewModel.addWorker(worker,getContext());
-                Toast.makeText(WorkerRegisterFragment.this.getContext(), "Ajouté", Toast.LENGTH_SHORT).show();
+                }else{
+                    worker.setPhotoWorker(saveToCacheMemory(getActivity(),selectedImage));
+                }
+                    workerRegisterFragmentViewModel.addWorker(worker,getContext());
+                    Toast.makeText(WorkerRegisterFragment.this.getContext(), "Ajouté", Toast.LENGTH_SHORT).show();
             }
         });
     }

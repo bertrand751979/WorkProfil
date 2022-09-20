@@ -22,6 +22,7 @@ import com.example.workprofil.R;
 import com.example.workprofil.activities.DetailWorkerActivity;
 import com.example.workprofil.adapter.AdapterWorker;
 import com.example.workprofil.model.Worker;
+import com.example.workprofil.repository.RepositoryWorker;
 import com.example.workprofil.viewModels.WorkerDisplayFragmentViewModel;
 import com.example.workprofil.viewModels.WorkerRegisterFragmentViewModel;
 
@@ -32,6 +33,7 @@ public class WorkerDisplayFragment extends Fragment {
     private RecyclerView recyclerView;
     private AdapterWorker adapterWorker;
     private WorkerDisplayFragmentViewModel workerDisplayFragmentViewModel;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,6 +53,7 @@ public class WorkerDisplayFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerView);
         setViewWorker();
     }
+
     private  void setViewWorker(){
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         OnMatCardClickedAction onMatCardClickedAction = new OnMatCardClickedAction() {
@@ -75,9 +78,9 @@ public class WorkerDisplayFragment extends Fragment {
             @Override
             public void onChanged(List<Worker> workers) {
                 adapterWorker.setListWorkerAdapter(new ArrayList<>(workers));
+
             }
         });
-
     }
 
 }

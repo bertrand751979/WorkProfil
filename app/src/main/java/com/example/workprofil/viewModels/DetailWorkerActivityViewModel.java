@@ -8,7 +8,7 @@ import com.example.workprofil.model.Worker;
 import com.example.workprofil.repository.RepositoryWorker;
 
 public class DetailWorkerActivityViewModel extends ViewModel {
-    public void updateWork(Worker worker, Context context){
+    public void updateWorker(Worker worker, Context context){
         RepositoryWorker.getInstance().updateWorker(worker, context);
     }
 }
